@@ -1,0 +1,39 @@
+{
+  "name": "@firefly-tools/core",
+  "version": "0.0.1",
+  "description": "Professional tools for Firefly III API integration using Deno",
+  "tasks": {
+    "dev": "deno run --allow-read --allow-net --allow-env --watch src/main.ts",
+    "start": "deno run --allow-read --allow-net --allow-env src/main.ts",
+    "test": "deno test --allow-read --allow-net --allow-env",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "check": "deno check src/main.ts",
+    "setup": "deno run --allow-read --allow-write --allow-env --allow-run scripts/setup.ts",
+    "example": "deno run --allow-read --allow-net --allow-env examples/basic-usage.ts",
+    "version": "deno eval 'import { PROJECT_INFO } from \"./src/version.ts\"; console.log(`${PROJECT_INFO.name} v${PROJECT_INFO.version}`);'"
+  },
+  "imports": {
+    "@std/assert": "https://deno.land/std@0.208.0/assert/mod.ts"
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/", "tests/", "scripts/", "examples/"]
+    }
+  },
+  "lint": {
+    "files": {
+      "include": ["src/", "tests/", "scripts/", "examples/"]
+    }
+  },
+  "test": {
+    "files": {
+      "include": ["tests/"]
+    }
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  }
+}
