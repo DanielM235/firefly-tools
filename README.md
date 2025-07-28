@@ -1,23 +1,31 @@
 # Firefly III Tools
 
-**Version**: 0.0.1  
-**Compatible with**: Firefly III v6.x (API v1)  
+**Version**: 0.0.1\
+**Compatible with**: Firefly III v6.x (API v1)\
 **Built with**: Deno 2.x
 
-A collection of tools built with Deno to enhance workflow with the Firefly III API.
+A collection of tools built with Deno to enhance workflow with the Firefly III
+API.
 
 ## Overview
 
-This repository contains utilities for interacting with the [Firefly III API](https://api-docs.firefly-iii.org/) to automate and enhance personal finance management workflows. All tools are built using Deno, a modern runtime for JavaScript and TypeScript.
+This repository contains utilities for interacting with the
+[Firefly III API](https://api-docs.firefly-iii.org/) to automate and enhance
+personal finance management workflows. All tools are built using Deno, a modern
+runtime for JavaScript and TypeScript.
 
 ## About Deno
 
 **Deno is different from Node.js in several key ways:**
 
-- **Security First**: Deno runs with no file, network, or environment access by default. You must explicitly grant permissions.
-- **Built-in TypeScript**: No need for separate compilation steps - TypeScript works out of the box.
-- **Standard Library**: Comprehensive standard library that reduces dependency on third-party packages.
-- **ES Modules**: Uses modern ES module syntax (`import`/`export`) instead of CommonJS.
+- **Security First**: Deno runs with no file, network, or environment access by
+  default. You must explicitly grant permissions.
+- **Built-in TypeScript**: No need for separate compilation steps - TypeScript
+  works out of the box.
+- **Standard Library**: Comprehensive standard library that reduces dependency
+  on third-party packages.
+- **ES Modules**: Uses modern ES module syntax (`import`/`export`) instead of
+  CommonJS.
 - **No package.json**: Dependencies are imported directly via URLs.
 - **Built-in Tools**: Includes formatter, linter, test runner, and bundler.
 
@@ -30,10 +38,12 @@ This repository contains utilities for interacting with the [Firefly III API](ht
 ## Compatibility
 
 | Firefly III Tools | Firefly III Version | API Version | Deno Version |
-|-------------------|---------------------|-------------|--------------|
+| ----------------- | ------------------- | ----------- | ------------ |
 | 0.0.1             | 6.x                 | v1          | 2.x          |
 
-**Important**: This project is designed for Firefly III v6.x and later. Earlier versions may not be fully compatible due to API changes and security improvements.
+**Important**: This project is designed for Firefly III v6.x and later. Earlier
+versions may not be fully compatible due to API changes and security
+improvements.
 
 ## Installation & Setup
 
@@ -54,7 +64,8 @@ This repository contains utilities for interacting with the [Firefly III API](ht
 
 ### Secure Configuration Management
 
-This project uses a secure configuration system that keeps sensitive data out of the repository:
+This project uses a secure configuration system that keeps sensitive data out of
+the repository:
 
 1. **Copy the example configuration**:
    ```bash
@@ -77,7 +88,8 @@ This project uses a secure configuration system that keeps sensitive data out of
    }
    ```
 
-**Important**: The `config/config.json` file is git-ignored to prevent accidental exposure of sensitive data.
+**Important**: The `config/config.json` file is git-ignored to prevent
+accidental exposure of sensitive data.
 
 ### Environment Variables (Alternative)
 
@@ -144,11 +156,13 @@ A robust, type-safe client for the Firefly III API that handles:
 - **Type Safety**: Full TypeScript support with API response types
 - **Rate Limiting**: Built-in rate limiting to respect API limits
 - **Configuration**: Flexible configuration management
-- **Professional Logging**: Structured logging with configurable levels and file output
+- **Professional Logging**: Structured logging with configurable levels and file
+  output
 
 ## Security Considerations
 
-- **No Secrets in Code**: All sensitive data is handled through configuration files or environment variables
+- **No Secrets in Code**: All sensitive data is handled through configuration
+  files or environment variables
 - **Git Ignore**: Configuration files with sensitive data are git-ignored
 - **Token Security**: API tokens are never logged or exposed in error messages
 - **HTTPS Only**: All API communications use HTTPS
@@ -175,9 +189,17 @@ A robust, type-safe client for the Firefly III API that handles:
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
+## 📖 Documentation
+
+- [Configuration Guide](docs/CONFIGURATION.md) - Detailed configuration setup
+- [Development Guide](docs/DEVELOPMENT.md) - How to contribute and develop
+- [Dependency Management](docs/DEPENDENCIES.md) - How dependencies are managed
+
 ## Support
 
 For issues related to:
-- **Firefly III API**: Check the [official API documentation](https://api-docs.firefly-iii.org/)
+
+- **Firefly III API**: Check the
+  [official API documentation](https://api-docs.firefly-iii.org/)
 - **Deno**: Check the [Deno documentation](https://deno.land/manual)
 - **This project**: Open an issue in this repository

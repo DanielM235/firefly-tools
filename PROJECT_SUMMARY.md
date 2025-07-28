@@ -1,27 +1,32 @@
 # Firefly III Tools - Project Summary
 
-**Version**: 0.0.1  
-**Compatible with**: Firefly III v6.x (API v1)  
+**Version**: 0.0.1\
+**Compatible with**: Firefly III v6.x (API v1)\
 **Built with**: Deno 2.x
 
 ## 🎯 Project Overview
 
-This repository provides a comprehensive set of tools for interacting with the Firefly III API using Deno. The project emphasizes security, type safety, and maintainability.
+This repository provides a comprehensive set of tools for interacting with the
+Firefly III API using Deno. The project emphasizes security, type safety, and
+maintainability.
 
 ## ✨ Key Features
 
 ### � **Compatibility & Version Information**
+
 - **Firefly III v6.x** - Designed for the latest stable version
 - **API v1** - Uses the standard Firefly III API endpoints
 - **Deno 2.x** - Built with modern Deno runtime
 - **TypeScript** - Full type safety and modern development experience
 
 ### �🔐 Secure Configuration Management
+
 - **Git-ignored configuration files** - No secrets in the repository
 - **Environment variable support** - Production-ready deployment
 - **Validation and error handling** - Clear error messages for misconfigurations
 
 ### 🚀 Professional API Client
+
 - **Type-safe TypeScript interface** - Full API type definitions
 - **Automatic retry logic** - Handles network issues gracefully
 - **Rate limiting** - Respects API limits
@@ -29,6 +34,7 @@ This repository provides a comprehensive set of tools for interacting with the F
 - **Request/response logging** - Debug capabilities
 
 ### 🛠️ Developer Experience
+
 - **Built-in development tools** - Formatting, linting, testing
 - **Clear project structure** - Easy to navigate and extend
 - **Comprehensive documentation** - API reference and guides
@@ -98,6 +104,7 @@ deno task lint       # Lint code
 ## 🏗️ Architecture Highlights
 
 ### Configuration Management
+
 ```typescript
 // Supports both file and environment variable configuration
 const configManager = new ConfigManager();
@@ -105,6 +112,7 @@ const config = await configManager.loadConfig();
 ```
 
 ### API Client
+
 ```typescript
 // Type-safe, professional API client
 const client = new FireflyApiClient(config);
@@ -112,10 +120,11 @@ const accounts = await client.getAccounts();
 ```
 
 ### Error Handling
+
 ```typescript
 // Comprehensive error handling
 try {
-  await client.getAccount('invalid-id');
+  await client.getAccount("invalid-id");
 } catch (error) {
   if (error instanceof FireflyApiError) {
     console.error(`API Error ${error.status}: ${error.message}`);
@@ -153,6 +162,7 @@ This project demonstrates Deno's key features:
 ## 🎉 Success Criteria
 
 You'll know the setup is working when:
+
 - ✅ Configuration loads without errors
 - ✅ API connection test passes
 - ✅ Example script runs successfully

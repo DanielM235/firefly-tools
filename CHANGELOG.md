@@ -3,13 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ## [0.0.1] - 2025-07-28
 
 ### Added
+
 - Initial project setup with Deno 2.x
 - Professional Firefly III API client with type safety
 - Secure configuration management system
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - User-Agent header with version information
 
 ### Project Structure
+
 - `src/client/` - API client implementations
 - `src/types/` - TypeScript type definitions
 - `src/utils/` - Utility functions including configuration management
@@ -37,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `scripts/` - Setup and utility scripts
 
 ### Documentation
+
 - README.md with setup instructions and compatibility matrix
 - Development guide with Deno best practices
 - Complete API reference documentation
@@ -44,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Copilot development instructions
 
 ### Security Features
+
 - No hardcoded secrets in source code
 - Git-ignored configuration files
 - Environment variable support for production
@@ -52,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API tokens never exposed in logs or error messages
 
 ### Compatibility
+
 - Firefly III v6.x and later
 - Deno 2.x runtime
 - TypeScript with strict type checking

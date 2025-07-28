@@ -13,7 +13,7 @@ export interface FireflyConfig {
  * Logging configuration interface
  */
 export interface LoggingConfig {
-  level: 'debug' | 'info' | 'warn' | 'error';
+  level: "debug" | "info" | "warn" | "error";
   logToFile: boolean;
   logFile: string;
 }

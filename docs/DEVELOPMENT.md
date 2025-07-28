@@ -7,10 +7,10 @@
    # Clone the repository
    git clone <repository-url>
    cd firefly-tools
-   
+
    # Copy configuration template
    cp config/config.example.json config/config.json
-   
+
    # Edit configuration with your Firefly III details
    nano config/config.json
    ```
@@ -29,23 +29,28 @@
 
 ### Key Differences from Node.js
 
-**Security Model**: 
+**Security Model**:
+
 - Deno runs with no permissions by default
-- You must explicitly grant permissions with flags like `--allow-read`, `--allow-net`
+- You must explicitly grant permissions with flags like `--allow-read`,
+  `--allow-net`
 - This prevents scripts from accessing files or network without permission
 
 **Module System**:
+
 - Uses ES modules (`import`/`export`) exclusively
 - No `package.json` - dependencies are imported via URLs
 - Built-in dependency management and caching
 
 **Built-in Tools**:
+
 - Formatter: `deno fmt` (like Prettier)
 - Linter: `deno lint` (like ESLint)
 - Test runner: `deno test`
 - Bundle: `deno bundle`
 
 **TypeScript First**:
+
 - TypeScript works out of the box, no compilation step needed
 - Strong type checking built-in
 
@@ -102,6 +107,7 @@ deno task test
 ## Configuration
 
 ### Method 1: Configuration File
+
 ```json
 {
   "firefly": {
@@ -112,6 +118,7 @@ deno task test
 ```
 
 ### Method 2: Environment Variables
+
 ```bash
 export FIREFLY_BASE_URL="https://your-firefly-instance.com"
 export FIREFLY_API_TOKEN="your-personal-access-token"
@@ -120,8 +127,8 @@ export FIREFLY_API_TOKEN="your-personal-access-token"
 ## API Client Usage
 
 ```typescript
-import { ConfigManager } from './src/utils/config-manager.ts';
-import { FireflyApiClient } from './src/client/firefly-client.ts';
+import { ConfigManager } from "./src/utils/config-manager.ts";
+import { FireflyApiClient } from "./src/client/firefly-client.ts";
 
 // Load configuration
 const configManager = new ConfigManager();
@@ -176,6 +183,7 @@ Deno.test("My test", () => {
 ```
 
 Run tests with:
+
 ```bash
 deno test --allow-read --allow-net --allow-env
 ```
@@ -202,6 +210,7 @@ deno test --allow-read --allow-net --allow-env
 ## Debugging
 
 Enable debug logging:
+
 ```bash
 # Set log level to debug
 export LOG_LEVEL=debug
@@ -209,6 +218,7 @@ deno run --allow-read --allow-net --allow-env src/main.ts
 ```
 
 Or in config.json:
+
 ```json
 {
   "logging": {

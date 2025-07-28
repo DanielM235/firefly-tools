@@ -1,16 +1,16 @@
 /**
  * Logger utility for Firefly III Tools
- * 
+ *
  * This module provides a centralized logging system with different log levels,
  * formatting, and optional file output based on configuration.
  */
 
-import { LoggingConfig } from '../types/config.ts';
+import { LoggingConfig } from "../types/config.ts";
 
 /**
  * Log levels supported by the application
  */
-export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
+export type LogLevel = "debug" | "info" | "warn" | "error";
 
 /**
  * Logger class for the Firefly III Tools application
@@ -34,7 +34,7 @@ export class Logger {
 
   /**
    * Configure the logger with the application configuration
-   * 
+   *
    * @param config Logging configuration
    */
   configure(config: LoggingConfig): void {
@@ -47,7 +47,7 @@ export class Logger {
    */
   private shouldLog(level: LogLevel): boolean {
     if (!this.config) return true;
-    
+
     const levels: Record<LogLevel, number> = {
       debug: 0,
       info: 1,
@@ -65,7 +65,7 @@ export class Logger {
     const timestamp = new Date().toISOString();
     const emoji = this.getEmojiForLevel(level);
     const levelUpper = level.toUpperCase().padEnd(5);
-    
+
     return `[${timestamp}] ${emoji} ${levelUpper}: ${message}`;
   }
 
@@ -74,16 +74,16 @@ export class Logger {
    */
   private getEmojiForLevel(level: LogLevel): string {
     switch (level) {
-      case 'debug':
-        return '🔍';
-      case 'info':
-        return '📋';
-      case 'warn':
-        return '⚠️';
-      case 'error':
-        return '❌';
+      case "debug":
+        return "🔍";
+      case "info":
+        return "📋";
+      case "warn":
+        return "⚠️";
+      case "error":
+        return "❌";
       default:
-        return '📝';
+        return "📝";
     }
   }
 
@@ -92,19 +92,19 @@ export class Logger {
    */
   private async writeLog(level: LogLevel, message: string): Promise<void> {
     const formattedMessage = this.formatMessage(level, message);
-    
+
     // Always write to console
     switch (level) {
-      case 'debug':
+      case "debug":
         console.debug(formattedMessage);
         break;
-      case 'info':
+      case "info":
         console.info(formattedMessage);
         break;
-      case 'warn':
+      case "warn":
         console.warn(formattedMessage);
         break;
-      case 'error':
+      case "error":
         console.error(formattedMessage);
         break;
     }
@@ -112,18 +112,21 @@ export class Logger {
     // Write to file if configured
     if (this.config?.logToFile && this.config.logFile) {
       try {
-        const logEntry = formattedMessage + '\n';
+        const logEntry = formattedMessage + "\n";
         // Read existing content and append
-        let existingContent = '';
+        let existingContent = "";
         try {
           existingContent = await Deno.readTextFile(this.config.logFile);
         } catch {
           // File doesn't exist yet, which is fine
         }
-        await Deno.writeTextFile(this.config.logFile, existingContent + logEntry);
+        await Deno.writeTextFile(
+          this.config.logFile,
+          existingContent + logEntry,
+        );
       } catch (error) {
         // Fallback to console if file logging fails
-        console.error('Failed to write to log file:', error);
+        console.error("Failed to write to log file:", error);
       }
     }
   }
@@ -132,15 +135,17 @@ export class Logger {
    * Safely stringify any value for logging
    */
   private safeStringify(value: unknown): string {
-    if (value === null) return 'null';
-    if (value === undefined) return 'undefined';
-    if (typeof value === 'string') return value;
-    if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-    
+    if (value === null) return "null";
+    if (value === undefined) return "undefined";
+    if (typeof value === "string") return value;
+    if (typeof value === "number" || typeof value === "boolean") {
+      return String(value);
+    }
+
     try {
       return JSON.stringify(value, null, 2);
     } catch {
-      return '[object Object]';
+      return "[object Object]";
     }
   }
 
@@ -148,49 +153,49 @@ export class Logger {
    * Log a debug message
    */
   debug(message: string, ...args: unknown[]): void {
-    if (!this.shouldLog('debug')) return;
-    
-    const fullMessage = args.length > 0 
-      ? `${message} ${args.map(arg => this.safeStringify(arg)).join(' ')}`
+    if (!this.shouldLog("debug")) return;
+
+    const fullMessage = args.length > 0
+      ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
-    
-    this.writeLog('debug', fullMessage);
+
+    this.writeLog("debug", fullMessage);
   }
 
   /**
    * Log an info message
    */
   info(message: string, ...args: unknown[]): void {
-    if (!this.shouldLog('info')) return;
-    
-    const fullMessage = args.length > 0 
-      ? `${message} ${args.map(arg => this.safeStringify(arg)).join(' ')}`
+    if (!this.shouldLog("info")) return;
+
+    const fullMessage = args.length > 0
+      ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
-    
-    this.writeLog('info', fullMessage);
+
+    this.writeLog("info", fullMessage);
   }
 
   /**
    * Log a warning message
    */
   warn(message: string, ...args: unknown[]): void {
-    if (!this.shouldLog('warn')) return;
-    
-    const fullMessage = args.length > 0 
-      ? `${message} ${args.map(arg => this.safeStringify(arg)).join(' ')}`
+    if (!this.shouldLog("warn")) return;
+
+    const fullMessage = args.length > 0
+      ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
-    
-    this.writeLog('warn', fullMessage);
+
+    this.writeLog("warn", fullMessage);
   }
 
   /**
    * Log an error message
    */
   error(message: string, error?: Error, ...args: unknown[]): void {
-    if (!this.shouldLog('error')) return;
-    
+    if (!this.shouldLog("error")) return;
+
     let errorMessage = message;
-    
+
     if (error instanceof Error) {
       errorMessage += ` - ${error.message}`;
       if (error.stack) {
@@ -201,10 +206,12 @@ export class Logger {
     }
 
     if (args.length > 0) {
-      errorMessage += ` ${args.map(arg => this.safeStringify(arg)).join(' ')}`;
+      errorMessage += ` ${
+        args.map((arg) => this.safeStringify(arg)).join(" ")
+      }`;
     }
-    
-    this.writeLog('error', errorMessage);
+
+    this.writeLog("error", errorMessage);
   }
 }
 
@@ -218,7 +225,7 @@ export function getLogger(): Logger {
 /**
  * Create a logger with application context
  * This ensures the logger is properly configured before use
- * 
+ *
  * @param config Logging configuration
  * @returns Configured logger instance
  */
