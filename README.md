@@ -144,6 +144,7 @@ A robust, type-safe client for the Firefly III API that handles:
 - **Type Safety**: Full TypeScript support with API response types
 - **Rate Limiting**: Built-in rate limiting to respect API limits
 - **Configuration**: Flexible configuration management
+- **Professional Logging**: Structured logging with configurable levels and file output
 
 ## Security Considerations
 

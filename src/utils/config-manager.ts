@@ -29,6 +29,7 @@ export class ConfigManager {
       const configText = await Deno.readTextFile('./config/config.json');
       fileConfig = JSON.parse(configText);
     } catch (error) {
+      // Note: We can't use the logger here since it depends on config being loaded
       console.warn('Could not load config/config.json, using environment variables only:', error instanceof Error ? error.message : 'Unknown error');
     }
 

@@ -1,5 +1,6 @@
 import { AppConfig } from '../types/config.ts';
 import { USER_AGENT } from '../version.ts';
+import { getLogger } from '../utils/logger.ts';
 import { 
   ApiResponse, 
   ApiErrorResponse, 
@@ -142,7 +143,8 @@ export class FireflyApiClient {
         // Wait before retrying (exponential backoff)
         if (attempt < this.config.firefly.retryAttempts) {
           const delay = this.config.firefly.retryDelay * Math.pow(2, attempt);
-          console.warn(`Request failed (attempt ${attempt + 1}/${this.config.firefly.retryAttempts + 1}), retrying in ${delay}ms...`);
+          const logger = getLogger();
+          logger.warn(`Request failed (attempt ${attempt + 1}/${this.config.firefly.retryAttempts + 1}), retrying in ${delay}ms...`);
           await new Promise(resolve => setTimeout(resolve, delay));
         }
       }
@@ -187,7 +189,8 @@ export class FireflyApiClient {
    */
   private logRequest(url: string, config: RequestInit): void {
     if (this.config.logging.level === 'debug') {
-      console.debug(`[FireflyAPI] ${config.method || 'GET'} ${url}`);
+      const logger = getLogger();
+      logger.debug(`[FireflyAPI] ${config.method || 'GET'} ${url}`);
     }
   }
 
@@ -196,7 +199,8 @@ export class FireflyApiClient {
    */
   private logResponse(status: number, data: unknown): void {
     if (this.config.logging.level === 'debug') {
-      console.debug(`[FireflyAPI] Response ${status}:`, data);
+      const logger = getLogger();
+      logger.debug(`[FireflyAPI] Response ${status}:`, data);
     }
   }
 
@@ -212,7 +216,8 @@ export class FireflyApiClient {
       await this.request('/api/v1/about');
       return true;
     } catch (error) {
-      console.error('API connection test failed:', error);
+      const logger = getLogger();
+      logger.error('API connection test failed:', error instanceof Error ? error : new Error(String(error)));
       return false;
     }
   }

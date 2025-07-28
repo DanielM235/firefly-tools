@@ -14,6 +14,7 @@ declare global {
       delete(key: string): void;
     };
     exit(code?: number): never;
+    test(name: string, fn: () => void | Promise<void>): void;
     Command: {
       new(command: string, options?: { args?: string[] }): {
         output(): Promise<{ success: boolean; stdout: Uint8Array; stderr: Uint8Array }>;

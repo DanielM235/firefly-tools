@@ -14,7 +14,8 @@
     "version": "deno eval 'import { PROJECT_INFO } from \"./src/version.ts\"; console.log(`${PROJECT_INFO.name} v${PROJECT_INFO.version}`);'"
   },
   "imports": {
-    "@std/assert": "https://deno.land/std@0.208.0/assert/mod.ts"
+    "@std/assert": "https://deno.land/std@0.208.0/assert/mod.ts",
+    "@std/log": "https://deno.land/std@0.208.0/log/mod.ts"
   },
   "fmt": {
     "files": {
