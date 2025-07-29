@@ -1,7 +1,7 @@
-import { AppConfig } from "../types/config.ts";
+import type { AppConfig } from "../types/config.ts";
 import { USER_AGENT } from "../version.ts";
 import { getLogger } from "../utils/logger.ts";
-import {
+import type {
   Account,
   ApiErrorResponse,
   ApiResponse,
@@ -352,16 +352,18 @@ export class FireflyApiClient {
    * @param categoryData Category data to create
    * @returns Promise<ApiResponse<Category>> Created category
    */
-  async createCategory(categoryData: CreateCategoryRequest): Promise<ApiResponse<Category>> {
+  async createCategory(
+    categoryData: CreateCategoryRequest,
+  ): Promise<ApiResponse<Category>> {
     const logger = getLogger();
     logger.info(`🏷️ Creating category: ${categoryData.name}`);
-    
+
     return await this.request<ApiResponse<Category>>(
       `/api/v1/categories`,
       {
         method: "POST",
         body: categoryData as unknown as Record<string, unknown>,
-      }
+      },
     );
   }
 

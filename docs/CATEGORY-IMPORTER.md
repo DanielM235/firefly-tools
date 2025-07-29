@@ -2,7 +2,8 @@
 
 ## 📋 **Overview**
 
-The Category Importer tool allows you to bulk import categories from JSON files into your Firefly III instance via the API.
+The Category Importer tool allows you to bulk import categories from JSON files
+into your Firefly III instance via the API.
 
 ## 🏗️ **Features**
 
@@ -40,12 +41,14 @@ Category files should contain an array of category objects:
 ```
 
 ### Required Fields:
+
 - `name` (string): The category name
 - `notes` (string, optional): Description or notes for the category
 
 ## 🚀 **Usage**
 
 ### Prerequisites:
+
 1. **Configuration**: Ensure your Firefly III API is configured
 2. **Permissions**: Tool needs read, environment, and network access
 3. **Category Files**: Place JSON files in `data/categories/` directory
@@ -65,6 +68,7 @@ deno run --allow-read --allow-env --allow-net examples/import-categories.ts
 The tool uses the same configuration as other Firefly III tools:
 
 ### Via Configuration File:
+
 ```json
 {
   "firefly": {
@@ -75,6 +79,7 @@ The tool uses the same configuration as other Firefly III tools:
 ```
 
 ### Via Environment Variables:
+
 ```bash
 export FIREFLY_BASE_URL="https://your-firefly-instance.com"
 export FIREFLY_API_TOKEN="your-personal-access-token"
@@ -120,6 +125,7 @@ export FIREFLY_API_TOKEN="your-personal-access-token"
 ## 🔧 **Rate Limiting**
 
 The tool includes built-in rate limiting:
+
 - **100ms delay** between category creations
 - **API retry logic** for failed requests
 - **Connection testing** before starting import
@@ -127,15 +133,18 @@ The tool includes built-in rate limiting:
 ## ⚠️ **Important Notes**
 
 ### Duplicate Categories:
+
 - Firefly III may reject categories with duplicate names
 - The tool will log errors for any failed imports
 - Check your existing categories before importing
 
 ### API Permissions:
+
 - Requires a Personal Access Token with category creation permissions
 - Token must be valid and not expired
 
 ### Data Validation:
+
 - JSON files must contain valid arrays
 - Each category must have a `name` field
 - Empty or invalid entries will cause import to fail
@@ -143,7 +152,9 @@ The tool includes built-in rate limiting:
 ## 🌍 **Localization**
 
 ### Portuguese (Brazil) - `categories-pt-br.json`
+
 Includes comprehensive categories for Brazilian users:
+
 - 🏠 **Despesas Domésticas** (Household Expenses)
 - 🚗 **Transporte** (Transportation)
 - ❤️ **Saúde** (Health)
@@ -154,6 +165,7 @@ Includes comprehensive categories for Brazilian users:
 - 🌱 **Desenvolvimento Pessoal** (Personal Development)
 
 ### Adding New Languages:
+
 1. Create a new JSON file in `data/categories/`
 2. Follow the same format as existing files
 3. Use appropriate emoji prefixes for visual organization
@@ -164,16 +176,19 @@ Includes comprehensive categories for Brazilian users:
 ### Common Issues:
 
 **API Connection Failed**
+
 - Check your base URL and API token
 - Verify Firefly III instance is accessible
 - Test with: `curl -H "Authorization: Bearer YOUR_TOKEN" YOUR_URL/api/v1/about`
 
 **Categories Not Created**
+
 - Check Firefly III logs for detailed error messages
 - Verify token permissions include category management
 - Look for duplicate category names
 
 **File Not Found**
+
 - Ensure JSON files are in `data/categories/` directory
 - Check file permissions and accessibility
 - Verify JSON syntax is valid

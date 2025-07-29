@@ -2,16 +2,19 @@
 
 ## 📋 **Overview**
 
-This project uses a multi-layered testing approach to ensure code quality while maintaining safety and preventing accidental API calls to production systems.
+This project uses a multi-layered testing approach to ensure code quality while
+maintaining safety and preventing accidental API calls to production systems.
 
 ## 🛡️ **Test Safety Principles**
 
 ### **🚨 NEVER Test Against Production**
+
 - **Unit tests** use mock data and configurations
 - **Integration tests** are disabled by default and clearly marked
 - **Real API calls** are only made intentionally in controlled environments
 
 ### **Test Isolation**
+
 - Each test cleans up after itself
 - Tests don't depend on external state
 - Configuration is mocked to prevent real API access
@@ -33,9 +36,9 @@ tests/
 ## 🧪 **Test Types**
 
 ### **Unit Tests**
-**Purpose**: Test individual components in isolation
-**Safety**: ✅ Safe - No external dependencies
-**Run**: Automatically in CI/CD
+
+**Purpose**: Test individual components in isolation **Safety**: ✅ Safe - No
+external dependencies **Run**: Automatically in CI/CD
 
 ```bash
 # Run all safe unit tests
@@ -46,15 +49,16 @@ deno test tests/config-manager.test.ts --allow-read --allow-env --allow-write
 ```
 
 **Examples:**
+
 - Type interface validation
 - Configuration loading with mock data
 - Logger formatting and level handling
 - Input validation without network calls
 
 ### **Integration Tests**
-**Purpose**: Test real API interactions
-**Safety**: ⚠️ **DANGEROUS** - Makes real API calls
-**Run**: Manual only, against test instances
+
+**Purpose**: Test real API interactions **Safety**: ⚠️ **DANGEROUS** - Makes
+real API calls **Run**: Manual only, against test instances
 
 ```bash
 # Enable integration test (edit file first)
@@ -65,6 +69,7 @@ deno test tests/integration/category-api.integration.ts --allow-read --allow-env
 ```
 
 **Requirements:**
+
 - Dedicated test Firefly III instance
 - Test configuration separate from production
 - Manual cleanup of test data
@@ -72,6 +77,7 @@ deno test tests/integration/category-api.integration.ts --allow-read --allow-env
 ## 🔧 **Test Configuration**
 
 ### **Mock Configuration**
+
 Used in unit tests to prevent real API calls:
 
 ```typescript
@@ -96,6 +102,7 @@ const mockConfig: AppConfig = {
 ```
 
 ### **Test Environment Isolation**
+
 ```typescript
 // Example: Config manager test isolation
 Deno.test("ConfigManager - should validate required configuration", async () => {
@@ -121,6 +128,7 @@ Deno.test("ConfigManager - should validate required configuration", async () => 
 ## 🚀 **Running Tests**
 
 ### **Safe Test Suite (Default)**
+
 Runs all unit tests without external dependencies:
 
 ```bash
@@ -134,6 +142,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 ```
 
 ### **Integration Tests (Manual)**
+
 **⚠️ WARNING: Only run against test instances!**
 
 1. **Set up test environment**:
@@ -146,7 +155,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 2. **Enable integration test**:
    ```typescript
    // In tests/integration/category-api.integration.ts
-   // Change: "SKIP_INTEGRATION: ..." 
+   // Change: "SKIP_INTEGRATION: ..."
    // To:     "INTEGRATION: ..."
    ```
 
@@ -158,6 +167,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 ## 📊 **Test Coverage Goals**
 
 ### **Unit Test Coverage**
+
 - ✅ **Types and Interfaces** - 100% coverage
 - ✅ **Configuration Loading** - All paths tested
 - ✅ **Logger Functionality** - All levels and formats
@@ -165,6 +175,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 - ⏳ **API Client Structure** - Method signatures and error handling
 
 ### **Integration Test Coverage**
+
 - ⏳ **Category Creation** - Real API category creation
 - ⏳ **Error Handling** - Real API error responses
 - ⏳ **Authentication** - Token validation
@@ -173,6 +184,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 ## 🔍 **Test Quality Checklist**
 
 ### **Before Adding Tests**
+
 - [ ] No hardcoded production URLs or tokens
 - [ ] Mock configurations used for unit tests
 - [ ] Integration tests clearly marked and disabled
@@ -180,6 +192,7 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 - [ ] Tests are isolated and don't depend on order
 
 ### **Test Review Checklist**
+
 - [ ] No `--allow-net` in unit test commands
 - [ ] Mock data used instead of real API calls
 - [ ] Environment variables cleared in tests
@@ -189,16 +202,19 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 ## 🚨 **Security Considerations**
 
 ### **API Token Safety**
+
 - Never commit real API tokens to tests
 - Use "mock-token-for-testing" in unit tests
 - Keep integration test tokens in git-ignored files
 
 ### **Production Protection**
+
 - Unit tests must not make network calls
 - Integration tests are disabled by default
 - Clear warnings on all dangerous operations
 
 ### **Error Handling**
+
 - Network failures in tests should be expected
 - Mock errors to test error handling paths
 - Don't expose sensitive data in test failures
@@ -206,33 +222,35 @@ deno test tests/category-types.test.ts --allow-read --allow-env
 ## 📝 **Adding New Tests**
 
 ### **Unit Test Template**
+
 ```typescript
 import { assertEquals } from "../src/deps.ts";
 
 Deno.test("Component - functionality description", () => {
   // Arrange: Set up test data
-  const testData = { /* mock data */ };
-  
+  const testData = {/* mock data */};
+
   // Act: Execute the functionality
   const result = functionUnderTest(testData);
-  
+
   // Assert: Verify the result
   assertEquals(result.property, expectedValue);
-  
+
   console.log("✅ Test description passed");
 });
 ```
 
 ### **Integration Test Template**
+
 ```typescript
 // 🚨 INTEGRATION TEST - MAKES REAL API CALLS 🚨
 Deno.test("SKIP_INTEGRATION: Component - real API test", async () => {
   console.log("⚠️ WARNING: This test makes real API calls!");
-  
+
   // Test setup with real configuration
   // Actual API interaction
   // Verification of real results
-  
+
   console.log("⚠️ Remember to clean up test data!");
 });
 ```
@@ -240,6 +258,7 @@ Deno.test("SKIP_INTEGRATION: Component - real API test", async () => {
 ## 🔄 **Continuous Integration**
 
 ### **CI/CD Pipeline**
+
 ```bash
 # Only run safe tests in CI
 deno test --allow-read --allow-env --allow-write
@@ -249,9 +268,11 @@ deno test --allow-read --allow-env --allow-write
 ```
 
 ### **Pre-commit Hooks**
+
 - Run unit tests before commits
 - Lint all test files
 - Validate no production tokens in code
 - Ensure integration tests are disabled
 
-This testing strategy ensures code quality while protecting production systems from accidental test data or API abuse.
+This testing strategy ensures code quality while protecting production systems
+from accidental test data or API abuse.

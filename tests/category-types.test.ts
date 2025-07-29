@@ -1,10 +1,13 @@
 import { assertEquals } from "../src/deps.ts";
-import { CreateCategoryRequest, CategoryLocalData } from "../src/types/firefly-api.ts";
+import type {
+  CategoryLocalData,
+  CreateCategoryRequest,
+} from "../src/types/firefly-api.ts";
 
 Deno.test("Category Types - CreateCategoryRequest interface", () => {
   const validCategory: CreateCategoryRequest = {
     name: "Test Category",
-    notes: "Test notes"
+    notes: "Test notes",
   };
 
   assertEquals(typeof validCategory.name, "string");
@@ -18,7 +21,7 @@ Deno.test("Category Types - CreateCategoryRequest interface", () => {
 Deno.test("Category Types - CategoryLocalData interface", () => {
   const categoryData: CategoryLocalData = {
     name: "[🏠 Test] Category Name",
-    notes: "Category description"
+    notes: "Category description",
   };
 
   assertEquals(typeof categoryData.name, "string");
@@ -30,7 +33,7 @@ Deno.test("Category Types - CategoryLocalData interface", () => {
 
 Deno.test("Category Types - optional notes field", () => {
   const categoryWithoutNotes: CreateCategoryRequest = {
-    name: "Category Without Notes"
+    name: "Category Without Notes",
   };
 
   assertEquals(typeof categoryWithoutNotes.name, "string");
@@ -42,13 +45,13 @@ Deno.test("Category Types - optional notes field", () => {
 Deno.test("Category Types - emoji validation", () => {
   const categoryWithEmoji: CategoryLocalData = {
     name: "[🏠 Despesas Domésticas] Supermercado",
-    notes: "Alimentos e produtos domésticos"
+    notes: "Alimentos e produtos domésticos",
   };
 
   // Test that emoji categories follow the expected pattern
   assertEquals(categoryWithEmoji.name.startsWith("["), true);
   assertEquals(categoryWithEmoji.name.includes("]"), true);
-  
+
   const emojiPart = categoryWithEmoji.name.split("]")[0];
   assertEquals(emojiPart.includes("🏠"), true);
 

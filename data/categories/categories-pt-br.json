@@ -1,15 +1,42 @@
 [
-  { "name": "[🏠 Despesas Domésticas] Supermercado", "notes": "Alimentos e produtos domésticos" },
-  { "name": "[🏠 Despesas Domésticas] Limpeza", "notes": "Produtos de limpeza em geral" },
-  { "name": "[🏠 Despesas Domésticas] Energia elétrica", "notes": "Conta de luz mensal" },
-  { "name": "[🏠 Despesas Domésticas] Água e Saneamento", "notes": "Conta de água e esgoto" },
-  { "name": "[🏠 Despesas Domésticas] Internet e Telefonia", "notes": "Serviços de comunicação" },
-  { "name": "[🏠 Despesas Domésticas] Manutenção da casa", "notes": "Reparos, serviços domésticos" },
-  { "name": "[🏠 Despesas Domésticas] Mobília e Eletrodomésticos", "notes": "Compra e reposição" },
+  {
+    "name": "[🏠 Despesas Domésticas] Supermercado",
+    "notes": "Alimentos e produtos domésticos"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Limpeza",
+    "notes": "Produtos de limpeza em geral"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Energia elétrica",
+    "notes": "Conta de luz mensal"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Água e Saneamento",
+    "notes": "Conta de água e esgoto"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Internet e Telefonia",
+    "notes": "Serviços de comunicação"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Manutenção da casa",
+    "notes": "Reparos, serviços domésticos"
+  },
+  {
+    "name": "[🏠 Despesas Domésticas] Mobília e Eletrodomésticos",
+    "notes": "Compra e reposição"
+  },
 
   { "name": "[🚗 Transporte] Combustível", "notes": "Gasolina, etanol" },
-  { "name": "[🚗 Transporte] Manutenção do veículo", "notes": "Revisões e serviços mecânicos" },
-  { "name": "[🚗 Transporte] Transporte público e apps", "notes": "Ônibus, metrô, Uber etc" },
+  {
+    "name": "[🚗 Transporte] Manutenção do veículo",
+    "notes": "Revisões e serviços mecânicos"
+  },
+  {
+    "name": "[🚗 Transporte] Transporte público e apps",
+    "notes": "Ônibus, metrô, Uber etc"
+  },
   { "name": "[🚗 Transporte] Seguro do veículo", "notes": "Apólice anual" },
 
   { "name": "[❤️ Saúde] Medicamentos", "notes": "Farmácia e itens médicos" },
@@ -17,27 +44,75 @@
   { "name": "[❤️ Saúde] Consultas e exames", "notes": "Saúde física" },
   { "name": "[❤️ Saúde] Saúde mental", "notes": "Psicólogos e terapeutas" },
 
-  { "name": "[🎓 Educação] Mensalidade escolar", "notes": "Colégio, faculdade" },
-  { "name": "[🎓 Educação] Cursos e certificações", "notes": "Idiomas, especializações" },
-  { "name": "[🎓 Educação] Material escolar", "notes": "Livros, uniformes etc" },
+  {
+    "name": "[🎓 Educação] Mensalidade escolar",
+    "notes": "Colégio, faculdade"
+  },
+  {
+    "name": "[🎓 Educação] Cursos e certificações",
+    "notes": "Idiomas, especializações"
+  },
+  {
+    "name": "[🎓 Educação] Material escolar",
+    "notes": "Livros, uniformes etc"
+  },
   { "name": "[🎓 Educação] Educação infantil", "notes": "Berçário e creche" },
 
-  { "name": "[🎉 Lazer e Cultura] Restaurantes", "notes": "Refeições fora de casa" },
-  { "name": "[🎉 Lazer e Cultura] Cinema, teatro e shows", "notes": "Eventos culturais" },
-  { "name": "[🎉 Lazer e Cultura] Assinaturas", "notes": "Netflix, Spotify etc" },
-  { "name": "[🎉 Lazer e Cultura] Viagens e passeios", "notes": "Turismo e escapadas" },
+  {
+    "name": "[🎉 Lazer e Cultura] Restaurantes",
+    "notes": "Refeições fora de casa"
+  },
+  {
+    "name": "[🎉 Lazer e Cultura] Cinema, teatro e shows",
+    "notes": "Eventos culturais"
+  },
+  {
+    "name": "[🎉 Lazer e Cultura] Assinaturas",
+    "notes": "Netflix, Spotify etc"
+  },
+  {
+    "name": "[🎉 Lazer e Cultura] Viagens e passeios",
+    "notes": "Turismo e escapadas"
+  },
 
   { "name": "[📈 Financeiro] Impostos", "notes": "IPVA, IR, taxas e tributos" },
-  { "name": "[📈 Financeiro] Tarifas bancárias", "notes": "Mensalidades e transferências" },
-  { "name": "[📈 Financeiro] Investimentos", "notes": "Corretora, fundos, ações" },
-  { "name": "[📈 Financeiro] Reserva de emergência", "notes": "Poupança para imprevistos" },
+  {
+    "name": "[📈 Financeiro] Tarifas bancárias",
+    "notes": "Mensalidades e transferências"
+  },
+  {
+    "name": "[📈 Financeiro] Investimentos",
+    "notes": "Corretora, fundos, ações"
+  },
+  {
+    "name": "[📈 Financeiro] Reserva de emergência",
+    "notes": "Poupança para imprevistos"
+  },
   { "name": "[📈 Financeiro] Seguro de vida", "notes": "Proteção familiar" },
-  { "name": "[📈 Financeiro] Planejamento financeiro", "notes": "Consultorias, ferramentas" },
+  {
+    "name": "[📈 Financeiro] Planejamento financeiro",
+    "notes": "Consultorias, ferramentas"
+  },
 
-  { "name": "[🎁 Presentes e Doações] Presentes", "notes": "Datas comemorativas" },
-  { "name": "[🎁 Presentes e Doações] Doações", "notes": "ONGs, projetos sociais" },
+  {
+    "name": "[🎁 Presentes e Doações] Presentes",
+    "notes": "Datas comemorativas"
+  },
+  {
+    "name": "[🎁 Presentes e Doações] Doações",
+    "notes": "ONGs, projetos sociais"
+  },
 
-  { "name": "[🌱 Desenvolvimento Pessoal] Academia e esportes", "notes": "Atividades físicas e equipamentos" },
-  { "name": "[🌱 Desenvolvimento Pessoal] Autoaperfeiçoamento", "notes": "Livros, coaching" },
-  { "name": "[🌱 Desenvolvimento Pessoal] Estética e beleza", "notes": "Salão e cosméticos" }
+  {
+    "name": "[🌱 Desenvolvimento Pessoal] Academia e esportes",
+    "notes": "Atividades físicas e equipamentos"
+  },
+  {
+    "name": "[🌱 Desenvolvimento Pessoal] Autoaperfeiçoamento",
+    "notes": "Livros, coaching"
+  },
+  {
+    "name": "[🌱 Desenvolvimento Pessoal] Estética e beleza",
+    "notes": "Salão e cosméticos"
+  }
 ]

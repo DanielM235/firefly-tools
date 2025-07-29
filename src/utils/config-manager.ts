@@ -1,4 +1,4 @@
-import { AppConfig } from "../types/config.ts";
+import type { AppConfig } from "../types/config.ts";
 
 /**
  * Configuration manager for the Firefly III tools

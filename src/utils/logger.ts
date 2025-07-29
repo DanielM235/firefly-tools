@@ -5,7 +5,7 @@
  * formatting, and optional file output based on configuration.
  */
 
-import { LoggingConfig } from "../types/config.ts";
+import type { LoggingConfig } from "../types/config.ts";
 
 /**
  * Log levels supported by the application

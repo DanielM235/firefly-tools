@@ -10,7 +10,7 @@
 import { ConfigManager } from "../utils/config-manager.ts";
 import { FireflyApiClient } from "../client/firefly-client.ts";
 import { getLogger } from "../utils/logger.ts";
-import { CategoryLocalData } from "../types/firefly-api.ts";
+import type { CategoryLocalData } from "../types/firefly-api.ts";
 import { exists } from "../deps.ts";
 
 interface CategoryFile {
@@ -33,9 +33,9 @@ async function scanCategoryFiles(): Promise<CategoryFile[]> {
   // In a full implementation, you'd use fs.walk or similar
   const knownFiles = [
     "categories-pt-br.json",
-    "categories-en.json", 
+    "categories-en.json",
     "categories-fr.json",
-    "categories-es.json"
+    "categories-es.json",
   ];
 
   for (const fileName of knownFiles) {
@@ -54,7 +54,9 @@ async function scanCategoryFiles(): Promise<CategoryFile[]> {
 /**
  * Load categories from a JSON file
  */
-async function loadCategoriesFromFile(filePath: string): Promise<CategoryLocalData[]> {
+async function loadCategoriesFromFile(
+  filePath: string,
+): Promise<CategoryLocalData[]> {
   try {
     const content = await Deno.readTextFile(filePath);
     const categories = JSON.parse(content);
@@ -72,14 +74,18 @@ async function loadCategoriesFromFile(filePath: string): Promise<CategoryLocalDa
 
     return categories;
   } catch (error) {
-    throw new Error(`Failed to load categories from ${filePath}: ${error.message}`);
+    throw new Error(
+      `Failed to load categories from ${filePath}: ${error.message}`,
+    );
   }
 }
 
 /**
  * Prompt user to select a category file
  */
-async function selectCategoryFile(files: CategoryFile[]): Promise<CategoryFile> {
+async function selectCategoryFile(
+  files: CategoryFile[],
+): Promise<CategoryFile> {
   const logger = getLogger();
 
   if (files.length === 0) {
@@ -97,10 +103,12 @@ async function selectCategoryFile(files: CategoryFile[]): Promise<CategoryFile> 
   });
 
   logger.debug("\nPlease select a file by entering its number:");
-  
+
   // For now, we'll use the first file as default
   // In a real implementation, you'd use Deno's stdin to get user input
-  logger.warn("⚠️  Using first file as default (interactive selection not yet implemented)");
+  logger.warn(
+    "⚠️  Using first file as default (interactive selection not yet implemented)",
+  );
   return await Promise.resolve(files[0]);
 }
 
@@ -109,7 +117,7 @@ async function selectCategoryFile(files: CategoryFile[]): Promise<CategoryFile> 
  */
 async function importCategories(
   client: FireflyApiClient,
-  categories: CategoryLocalData[]
+  categories: CategoryLocalData[],
 ): Promise<void> {
   const logger = getLogger();
   let created = 0;
@@ -120,18 +128,17 @@ async function importCategories(
   for (const category of categories) {
     try {
       logger.info(`📝 Creating: ${category.name}`);
-      
+
       await client.createCategory({
         name: category.name,
         notes: category.notes,
       });
-      
+
       created++;
       logger.debug(`✅ Created: ${category.name}`);
-      
+
       // Small delay to respect rate limits
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
+      await new Promise((resolve) => setTimeout(resolve, 100));
     } catch (error) {
       errors++;
       logger.error(`❌ Failed to create ${category.name}: ${error.message}`);
@@ -144,7 +151,9 @@ async function importCategories(
   logger.info(`  📋 Total: ${categories.length}`);
 
   if (errors > 0) {
-    logger.warn("⚠️  Some categories could not be created. Check the logs above for details.");
+    logger.warn(
+      "⚠️  Some categories could not be created. Check the logs above for details.",
+    );
   } else {
     logger.info("🎉 All categories imported successfully!");
   }
@@ -155,7 +164,7 @@ async function importCategories(
  */
 async function main(): Promise<void> {
   const logger = getLogger();
-  
+
   try {
     logger.info("🏷️  Firefly III Category Importer");
     logger.info("=================================\n");
@@ -169,7 +178,7 @@ async function main(): Promise<void> {
     // Initialize API client
     logger.info("🔗 Connecting to Firefly III API...");
     const client = new FireflyApiClient(config);
-    
+
     // Test connection
     const isConnected = await client.testConnection();
     if (!isConnected) {
@@ -192,13 +201,18 @@ async function main(): Promise<void> {
     logger.info(`📋 Loaded ${categories.length} categories`);
 
     // Confirm import
-    logger.info(`\n⚠️  About to import ${categories.length} categories to Firefly III`);
-    logger.info("   This will create new categories in your Firefly III instance.");
-    logger.info("   Continue? (This tool will proceed automatically for now)\n");
+    logger.info(
+      `\n⚠️  About to import ${categories.length} categories to Firefly III`,
+    );
+    logger.info(
+      "   This will create new categories in your Firefly III instance.",
+    );
+    logger.info(
+      "   Continue? (This tool will proceed automatically for now)\n",
+    );
 
     // Import categories
     await importCategories(client, categories);
-
   } catch (error) {
     logger.error(`💥 Error: ${error.message}`);
     Deno.exit(1);
