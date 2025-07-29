@@ -159,7 +159,10 @@ export class Logger {
       ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
 
-    this.writeLog("debug", fullMessage);
+    // Fire and forget - don't block on file I/O
+    this.writeLog("debug", fullMessage).catch(() => {
+      // Ignore file write errors - already handled in writeLog
+    });
   }
 
   /**
@@ -172,7 +175,10 @@ export class Logger {
       ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
 
-    this.writeLog("info", fullMessage);
+    // Fire and forget - don't block on file I/O
+    this.writeLog("info", fullMessage).catch(() => {
+      // Ignore file write errors - already handled in writeLog
+    });
   }
 
   /**
@@ -185,7 +191,10 @@ export class Logger {
       ? `${message} ${args.map((arg) => this.safeStringify(arg)).join(" ")}`
       : message;
 
-    this.writeLog("warn", fullMessage);
+    // Fire and forget - don't block on file I/O
+    this.writeLog("warn", fullMessage).catch(() => {
+      // Ignore file write errors - already handled in writeLog
+    });
   }
 
   /**
@@ -211,7 +220,10 @@ export class Logger {
       }`;
     }
 
-    this.writeLog("error", errorMessage);
+    // Fire and forget - don't block on file I/O
+    this.writeLog("error", errorMessage).catch(() => {
+      // Ignore file write errors - already handled in writeLog
+    });
   }
 }
 

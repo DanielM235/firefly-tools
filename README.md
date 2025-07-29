@@ -100,6 +100,37 @@ export FIREFLY_BASE_URL="https://your-firefly-instance.com"
 export FIREFLY_API_TOKEN="your-personal-access-token"
 ```
 
+## 🛠️ Available Tools
+
+### Category Importer
+Bulk import categories from JSON files into your Firefly III instance.
+
+```bash
+# Import categories from data/categories/ directory
+deno run --allow-read --allow-env --allow-net src/tools/category-importer.ts
+
+# Or use the example wrapper
+deno run --allow-read --allow-env --allow-net examples/import-categories.ts
+```
+
+**Features:**
+- Automatic discovery of category files
+- Support for multiple languages (currently Portuguese-BR included)
+- Rate limiting and error handling
+- Professional logging with detailed progress reports
+
+**Included Categories:**
+- 🏠 **Household Expenses** - Utilities, groceries, maintenance
+- 🚗 **Transportation** - Fuel, public transport, vehicle maintenance
+- ❤️ **Health** - Medications, insurance, consultations
+- 🎓 **Education** - School fees, courses, materials
+- 🎉 **Leisure & Culture** - Restaurants, entertainment, travel
+- 📈 **Financial** - Taxes, investments, banking fees
+- 🎁 **Gifts & Donations** - Special occasions, charitable giving
+- 🌱 **Personal Development** - Fitness, beauty, self-improvement
+
+For detailed usage instructions, see [Category Importer Documentation](docs/CATEGORY-IMPORTER.md).
+
 ## Development
 
 ### Project Structure
@@ -192,10 +223,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 📖 Documentation
 
 - [Configuration Guide](docs/CONFIGURATION.md) - Detailed configuration setup
-- [Development Guide](docs/DEVELOPMENT.md) - How to contribute and develop
+- [Development Guide](docs/DEVELOPMENT.md) - How to contribute and develop  
 - [Dependency Management](docs/DEPENDENCIES.md) - How dependencies are managed
-
-## Support
+- [Category Importer](docs/CATEGORY-IMPORTER.md) - Bulk import categories tool
+- [Testing Strategy](docs/TESTING.md) - Safe testing practices and guidelines## Support
 
 For issues related to:
 
