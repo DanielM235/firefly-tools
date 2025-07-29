@@ -2,6 +2,7 @@
   "name": "@firefly-tools/core",
   "version": "0.0.1",
   "description": "Tools for Firefly III API integration using Deno",
+  "exports": "./src/main.ts",
   "tasks": {
     "dev": "deno run --allow-read --allow-net --allow-env --watch src/main.ts",
     "start": "deno run --allow-read --allow-net --allow-env src/main.ts",
@@ -22,22 +23,15 @@
     "@/deps": "./src/deps.ts"
   },
   "fmt": {
-    "files": {
-      "include": ["src/", "tests/", "scripts/", "examples/"]
-    }
+    "include": ["src/", "tests/", "scripts/", "examples/"]
   },
   "lint": {
-    "files": {
-      "include": ["src/", "tests/", "scripts/", "examples/"]
-    }
+    "include": ["src/", "tests/", "scripts/", "examples/"]
   },
   "test": {
-    "files": {
-      "include": ["tests/"]
-    }
+    "include": ["tests/"]
   },
   "compilerOptions": {
-    "allowJs": true,
     "lib": ["deno.window"],
     "strict": true
   }

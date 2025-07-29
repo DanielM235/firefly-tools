@@ -1,5 +1,4 @@
-import { assertEquals, assertRejects } from "../src/deps.ts";
-import { move } from "https://deno.land/std@0.208.0/fs/mod.ts";
+import { assertEquals, assertRejects, move } from "../src/deps.ts";
 import { ConfigManager } from "../src/utils/config-manager.ts";
 
 Deno.test("ConfigManager - should load configuration from environment variables", async () => {

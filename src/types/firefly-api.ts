@@ -183,3 +183,13 @@ export interface Category {
     earned?: BudgetSpent[];
   };
 }
+
+export interface CreateCategoryRequest {
+  name: string;
+  notes?: string;
+}
+
+export interface CategoryLocalData {
+  name: string;
+  notes?: string;
+}
