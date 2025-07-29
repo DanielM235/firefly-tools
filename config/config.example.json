@@ -1,0 +1,18 @@
+{
+  "firefly": {
+    "baseUrl": "https://your-firefly-instance.com",
+    "apiToken": "your-personal-access-token-here",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "retryDelay": 1000
+  },
+  "logging": {
+    "level": "info",
+    "logToFile": false,
+    "logFile": "firefly-tools.log"
+  },
+  "cache": {
+    "enabled": true,
+    "ttl": 300000
+  }
+}
